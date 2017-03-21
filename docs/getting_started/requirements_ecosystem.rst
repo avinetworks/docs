@@ -16,6 +16,7 @@ Bare Metal (Linux Server Cloud)
 =================================
 
 - Bare metal hosts running:
+
     - Oracle Enterprise Linux 7.0, 7.1, 7.2, 7.3
     - Red Hat Enterprise Linux 7.0, 7.1, 7.2, 7.3
     - CentOS Linux 7.0, 7.1, 7.2, 7.3
