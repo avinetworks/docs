@@ -1,15 +1,7 @@
 Bare-metal Avi Deployment
-========================
+=========================
 
-Requirements
-------------
-
-- CentOS/RHEL/OracleLinux 7.x
-- Ubuntu 14.04 or higher
-- Docker 1.12 or higher
-
-Deployment Guides
--------------------
+Below are the current methods of deployment supported by this role to deploy the Avi Controller. Please select from the options below to learn how to deploy using each configuration.
 
 .. toctree::
     :maxdepth: 1
@@ -17,3 +9,10 @@ Deployment Guides
     docker_hub
     private_repository
     compressed_image
+
+Requirements
+------------
+
+- CentOS/RHEL/OracleLinux 7.x
+- Ubuntu 14.04 or higher
+- Docker 1.12 or higher

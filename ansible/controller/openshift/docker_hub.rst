@@ -3,7 +3,8 @@ Using Docker Hub
 
 Deploying Avi Controller from the Docker Hub is the default action. However it does require the server to have internet access to Docker Hub as it will download the image.
 
-**Steps:**
+Steps
+^^^^^
 
 1. Install the Avi Controller role on the host you are executing from.
 

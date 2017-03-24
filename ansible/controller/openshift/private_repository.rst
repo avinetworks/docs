@@ -1,7 +1,15 @@
 Using a Private Docker Repository
 ------------------------------------
 
-**Steps:**
+Requirements
+^^^^^^^^^^^^^
+
+- CentOS/RHEL/OracleLinux 7.x
+- Ubuntu 14.04 or higher
+- Docker 1.12 or higher
+
+Steps
+^^^^^
 
 1. Install the Avi Controller role on the host you are executing from.
 

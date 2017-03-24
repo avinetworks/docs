@@ -4,11 +4,6 @@ Avi Controller Role
 
 To help automate the deployment of Avi Vantage Controller in your environment we've developed an Ansible Role which can deploy in many environemnts. This includes deploying from Docker Hub, Private Docker Repo, Docker compressed images (tgz), as well as some cloud environments including CSP deployment.
 
-.. contents:: Contents
-    :local:
-    :depth: 3
-
-
 ************************
 Prerequisites
 ************************
@@ -17,7 +12,6 @@ To get started you will need the following:
 
 - Ansible 2.2 or higher
 - Server or Cloud to install Avi Controller on (Baremetal, CSP, etc.)
-
 
 ************************
 Parameters
@@ -37,3 +31,4 @@ Deploying Avi Controller
 
     baremetal/index
     csp/index
+    openshift/index

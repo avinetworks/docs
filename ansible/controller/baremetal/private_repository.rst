@@ -1,7 +1,8 @@
 Using a Private Docker Repository
 ------------------------------------
 
-**Steps:**
+Steps
+^^^^^
 
 1. Install the Avi Controller role on the host you are executing from.
 

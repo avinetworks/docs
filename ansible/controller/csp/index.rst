@@ -1,15 +1,16 @@
 Cisco CSP Avi Deployment
 ==========================
 
-Requirements
-------------
-You will need to have available memory and storage for both the image, and the service on your CSP 2100.
-
-
 Using QCOW image
 ----------------
 
-**Steps:**
+Requirements
+^^^^^^^^^^^^^
+
+- You will need to have available memory and storage for both the image, and the service on your CSP 2100.
+
+Steps
+^^^^^
 
 1. Install the Avi Controller role on the host you are executing from.
 
