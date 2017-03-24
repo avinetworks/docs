@@ -8,13 +8,15 @@ To help automate the deployment of Avi Vantage Controller in your environment we
     :local:
     :depth: 3
 
+
 Prerequisites
 -------------
 
 To get started you will need the following:
 
 - Ansible 2.2 or higher
-- a server to install Avi Controller on (Baremetal, CSP, etc.)
+- Server or Cloud to install Avi Controller on (Baremetal, CSP, etc.)
+
 
 Parameters
 ----------
@@ -34,12 +36,14 @@ Bare-metal Avi Deployment
     :local:
     :depth: 1
 
+
 Requirements
 """"""""""""
 
 - CentOS/RHEL/OracleLinux 7.x
 - Ubuntu 14.04 or higher
 - Docker 1.12 or higher
+
 
 Using Docker Hub
 """"""""""""""""
@@ -96,7 +100,6 @@ Deploying Avi Controller from the Docker Hub is the default action. However it d
   .. code:: Bash
 
     ansible-playbook myplaybook.yml -u <username> --ask-pass
-
 
 
 Using a Private Docker Repository
@@ -222,19 +225,21 @@ Cisco CSP Avi Deployment
 
 Requirements
 """"""""""""
+You will need to have available memory and storage for both the image, and the service on your CSP 2100. 
+
 
 Using QCOW image
 """"""""""""""""
 
 **Steps:**
 
-#. Install the Avi Controller role on the host you are executing from.
+1. Install the Avi Controller role on the host you are executing from.
 
   .. code-block:: bash
 
     sudo ansible-galaxy -f avinetworks.avicontroller
 
-#. Identify how we want to define our hosts. Ansible can accept hosts three ways: command-line, by inventory file, or by dynamic inventory file. We will use an inventory in this case. Ansible by default uses /etc/ansible/hosts as it's default inventory. Lets add this segment to the bottom of the page.
+2. Identify how we want to define our hosts. Ansible can accept hosts three ways: command-line, by inventory file, or by dynamic inventory file. We will use an inventory in this case. Ansible by default uses /etc/ansible/hosts as it's default inventory. Lets add this segment to the bottom of the page.
 
   .. code-block:: text
 
@@ -243,13 +248,13 @@ Using QCOW image
 
   Replace the IP with the IP of your CSP host you want to deploy to.
 
-#. Make sure you are able to SSH into the CSP device.
+3. Make sure you are able to SSH into the CSP device.
 
   .. code-block:: bash
 
     ssh user@10.120.222.56
 
-#. Create the playbook. It should look similar to this
+4. Create the playbook. It should look similar to this
 
   .. code-block:: yaml
 
@@ -297,7 +302,7 @@ Using QCOW image
 
   In this playbook we are specifying that this "play" should apply to the "csp_devices" hosts. Anything not required mentioned here `CSP Deployment Variables`_ can be omitted from your role parameters. Defaults are also noted on that document.
 
-#. Execute the playbook.
+5. Execute the playbook.
 
   .. note::
     - If you are not using an ssh-key you will also need to specify `--ask-pass` to ansible.
