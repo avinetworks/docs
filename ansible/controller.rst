@@ -1,6 +1,6 @@
-*******************
+############################
 Avi Controller Role
-*******************
+############################
 
 To help automate the deployment of Avi Vantage Controller in your environment we've developed an Ansible Role which can deploy in many environemnts. This includes deploying from Docker Hub, Private Docker Repo, Docker compressed images (tgz), as well as some cloud environments including CSP deployment.
 
@@ -9,8 +9,9 @@ To help automate the deployment of Avi Vantage Controller in your environment we
     :depth: 3
 
 
+************************
 Prerequisites
--------------
+************************
 
 To get started you will need the following:
 
@@ -18,19 +19,21 @@ To get started you will need the following:
 - Server or Cloud to install Avi Controller on (Baremetal, CSP, etc.)
 
 
+************************
 Parameters
-----------
+************************
 
 Ansible Role can take parameters, these parameters can determine where and how Ansible will execute the installation and configuration of the Avi Vantage Controller.
 
 Due to the fast pace of features and parameters that get added we will not include them here directly, but they can be accessed in two places. In our public GitHub repository (https://github.com/avinetworks/ansible-role-avicontroller) or in the Ansible Galaxy (https://galaxy.ansible.com/avinetworks/avicontroller/). The readme includes all possible parameters.
 
 
+************************
 Deploying Avi Controller
-------------------------
+************************
 
 Bare-metal Avi Deployment
-^^^^^^^^^^^^^^^^^^^^^^^^^
+========================
 
 .. contents:: Contents
     :local:
@@ -38,7 +41,7 @@ Bare-metal Avi Deployment
 
 
 Requirements
-""""""""""""
+------------
 
 - CentOS/RHEL/OracleLinux 7.x
 - Ubuntu 14.04 or higher
@@ -46,7 +49,7 @@ Requirements
 
 
 Using Docker Hub
-""""""""""""""""
+------------------------
 
 Deploying Avi Controller from the Docker Hub is the default action. However it does require the server to have internet access to Docker Hub as it will download the image.
 
@@ -103,7 +106,7 @@ Deploying Avi Controller from the Docker Hub is the default action. However it d
 
 
 Using a Private Docker Repository
-"""""""""""""""""""""""""""""""""
+------------------------------------
 
 **Steps:**
 
@@ -163,7 +166,7 @@ Using a Private Docker Repository
 
 
 Using a Compressed Docker Image
-"""""""""""""""""""""""""""""""
+------------------------------------
 
 **Steps:**
 
@@ -221,15 +224,15 @@ Using a Compressed Docker Image
 
 
 Cisco CSP Avi Deployment
-^^^^^^^^^^^^^^^^^^^^^^^^^
+==========================
 
 Requirements
-""""""""""""
-You will need to have available memory and storage for both the image, and the service on your CSP 2100. 
+------------
+You will need to have available memory and storage for both the image, and the service on your CSP 2100.
 
 
 Using QCOW image
-""""""""""""""""
+----------------
 
 **Steps:**
 
