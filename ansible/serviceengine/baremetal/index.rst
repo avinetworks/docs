@@ -1,7 +1,7 @@
 Bare-metal Avi Deployment
 =========================
 
-Below are the current methods of deployment supported by this role to deploy the Avi Controller. Please select from the options below to learn how to deploy using each configuration.
+Below are the current methods of deployment supported by this role to deploy the Avi SE. Please select from the options below to learn how to deploy using each configuration.
 
 .. toctree::
     :maxdepth: 1
