@@ -25,32 +25,33 @@ We recommend following the structure described by Ansible here http://docs.ansib
       group1                        # variables assigned to hosts in group1
       group2                        # variables assigned to hosts in group2
     host_vars/
-      hostname1                     # variables assigned to the specific host with name of 'hostname1'
-      hostname2                     # variables assigned to the specific host with name of 'hostname2'
+      hostname1                     # variables assigned to 'hostname1'
+      hostname2                     # variables assigned to 'hostname2'
 
-    library/                        # if you create custom modules to perform a task put them here
+    library/                        # custom modules go here
 
     avicontroller.yml               # playbook that can deploy your controller or
                                     # build your controller
 
-    avise.yml                       # playbook that can prepare your SE servers for
-                                    # the Linux Server Cluster Avi deploy
+    avise.yml                       # playbook that can prepare your SE servers
+                                    # for the Linux Server Cluster Avi deploy
 
-    create_vip.yml                  # playbook that may create a Virtual Service, Pool, etc.
-    ...                             # add more as you like, if you have too many of these,
+    create_vip.yml                  # playbook that uses modules to create vip
+    ...                             # if you have too many of these,
                                     # think about combining tasks into roles,
                                     # and providing variables to roles
 
     roles/
-      avinetworks.avisdk            # avisdk role you downloaded from Ansible Galaxy
-      avinetworks.avicontroller     # avicontroller role downloaded from Ansible Galaxy
-      avinetworks.docker            # docker role downloaded from Ansible Galaxy
+      avinetworks.avisdk            # avisdk role downloaded from Galaxy
+      avinetworks.avicontroller     # avicontroller role downloaded from Galaxy
+      avinetworks.docker            # docker role downloaded from Galaxy
       automation_role/              # this can be the custom role you create
         tasks/
-          main.yml                  # this can be a bunch of tasks that are common to your playbooks
+          main.yml                  # tasks that are common to your playbooks
         vars/
           main.yml                  # vars you set for your tasks within the role
         defaults/
-          main.yml                  # these are default values you can use to provide
-                                    # defaults to your role tasks (can be overriden by playbook
+          main.yml                  # default values you that can provide
+                                    # defaults to your role tasks
+                                    # and can be overriden by playbook
         library/                    # can also contain custom modules
