@@ -48,7 +48,7 @@ Steps
 5. Execute the playbook.
 
   .. note::
-    - If you are not using an ssh-key you will also need to specify ``--ask-pass`` to ansible.
+    - If you are not using an SSH key you will also need to specify ``--ask-pass`` to ansible.
     - If your current user is different you will need to specify ``-u <username>`` to ansible.
 
   .. code:: bash
