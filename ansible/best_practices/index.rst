@@ -126,3 +126,15 @@ When using a static inventory, you will want to seperate staging vs production. 
   ansible-playbook -i production myplaybook.yml
 
 Running it this way will ensure that only the production hosts are being executed against.
+
+***************
+Version Control
+***************
+
+The use of Version Control software is extremely important. It will help maintain an audit trail, and allow others to verify code changes prior to pulling them into the master or branch used to execute. It's extremely important to have someone verify configuration changes. A simple typo can easily unintentionally down a service or cause interruption.
+
+***********
+Vault
+***********
+
+We recommend encrypting anything that includes sensitive information, such as password. Ansible has a feature called Vault, which can by the command ``ansible-vault``. Best advice is to create a file named ``vars`` and ``vault``, located in the ``group_vars/`` directory. In the ``vars`` file, define all the possible variables needed, including sensitive ones. Then in the ``vault`` file copy all the sensitive variables over and prefix with ``vault_``. Then in the ``vars`` file point to the matching ``vault_`` variables. Then using ``ansible-vault encrypt vault.yml`` encrypt your sensitive variables. To decrypt on execution use ``--ask-vault-pass``. When executing your playbook it will prompt for the decrpytion password.
