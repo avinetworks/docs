@@ -3,6 +3,7 @@ Ansible Best Practices
 ############################
 
 .. contents::
+  :local:
 
 There are a few key things we need to keep in mind when dealing with the deployment of Avi with Ansible.
 
@@ -123,6 +124,7 @@ How to seperate Staging vs Production
 When using a static inventory, you will want to seperate staging vs production. These same practices can be applied to Dynamic Inventory as well. For example, using a AWS Tag "environment:production" would group systems in the `ec2_tag_environment_production` group. Our recommendation is to seperate your static hosts between two files for staging and production. This will prevent any possible confusion between what hosts are being executed on prior to running a playbook. An example run would look like
 
 .. code-block:: shell
+
   ansible-playbook -i production myplaybook.yml
 
 Running it this way will ensure that only the production hosts are being executed against.
@@ -137,4 +139,4 @@ The use of Version Control software is extremely important. It will help maintai
 Vault
 ***********
 
-We recommend encrypting anything that includes sensitive information, such as password. Ansible has a feature called Vault, which can by the command ``ansible-vault``. Best advice is to create a file named ``vars`` and ``vault``, located in the ``group_vars/`` directory. In the ``vars`` file, define all the possible variables needed, including sensitive ones. Then in the ``vault`` file copy all the sensitive variables over and prefix with ``vault_``. Then in the ``vars`` file point to the matching ``vault_`` variables. Then using ``ansible-vault encrypt vault.yml`` encrypt your sensitive variables. To decrypt on execution use ``--ask-vault-pass``. When executing your playbook it will prompt for the decrpytion password.
+We recommend encrypting anything that includes sensitive information, such as password. Ansible has a feature called Vault, which can by the command ``ansible-vault``. Best advice is to create a file named ``vars`` and ``vault``, located in the ``group_vars/`` directory. In the ``vars`` file, define all the possible variables needed, including sensitive ones. Then in the ``vault`` file copy all the sensitive variables over and prefix with ``vault_``. Then in the ``vars`` file point to the matching ``vault_`` variables. Then using ``ansible-vault encrypt vault.yml`` to encrypt your sensitive variables. To decrypt on execution use ``--ask-vault-pass``. When executing your playbook it will prompt for the decrpytion password.

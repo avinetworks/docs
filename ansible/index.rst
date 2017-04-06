@@ -5,7 +5,7 @@ Ansible Integration
 .. toctree::
     :maxdepth: 1
 
-    best_practices/index
+    ansible/index
     controller/index
     serviceengine/index
     docker/index
