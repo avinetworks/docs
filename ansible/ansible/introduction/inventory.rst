@@ -57,3 +57,13 @@ There is one catch though. When using groups we cannot place single hosts not in
   [database]
   db1.example.com
   db2.example.com
+
+***********************
+Non-standard SSH Ports
+***********************
+
+If you are running non-standard SSH ports on your hosts you can also specify the port on the hostname seperated by a colon. For example:
+
+.. code-block:: ini
+
+  host.example.com:2222
