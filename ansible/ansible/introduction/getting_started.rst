@@ -1,7 +1,10 @@
-##############
+###############
 Getting Started
-##############
+###############
 
+.. contents::
+  :local:
+  
 **********************
 How does Ansible Work?
 **********************
@@ -19,12 +22,6 @@ By default, Ansible will attempt to use your SSH key to authenticate the current
 ``--user <myuser>``
   option to allow us to supply a user for login to the remote host
 
-*****************
-Host Key Checking
-*****************
-
-
-
 ********************
 Testing Connectivity
 ********************
@@ -35,4 +32,22 @@ When using Ansible, we rely on connectivity to the remote host via ssh. To test 
 
   ansible 10.20.10.200 -m ping -u root --ask-pass
 
-This command will connect over SSH to the remote host.
+This command will connect over SSH to the remote host and verify connectivity. We will explain later more about this type of Ansible command.
+
+
+*****************
+Host Key Checking
+*****************
+
+Host checking is used to verify the known host key against the host key on the remote server. Host keys are often times located in your ``known_hosts`` file. This file is usually located at ``~/.ssh/known_hosts``. If this file doesn't have a host key for the host it will ask if you trust it. If not then it proceeds. However, if the host is in there, but the key doesn't match, it will return an error. When using automation sometimes this is common, and not an issue. In Ansible we have a way to disable errors on host key checking. You can edit ``/etc/ansible/ansible.cfg`` or ``~/.ansible.cfg`` and set ``host_key_checking = False``. For example:
+
+.. code-block:: shell
+
+  [defaults]
+  host_key_checking = False
+
+You can also use an environment variable, however I do discourage this practice unless required.
+
+.. code-block:: shell
+
+  export ANSIBLE_HOST_KEY_CHECKING=False

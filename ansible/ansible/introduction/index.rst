@@ -1,3 +1,9 @@
+#############
+Introduction
+#############
+
+Let's get started with the basics to Ansible. We will cover installation, getting started, understanding yaml, and the other key properties that are needed to use Ansible's vast amount of features.
+
 .. toctree::
     :maxdepth: 2
 
