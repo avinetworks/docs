@@ -13,6 +13,5 @@ Avi Networks recognizes how automation using Ansible is drastically changing the
 .. toctree::
     :maxdepth: 2
 
-    installation
-    understanding_yaml
+    introduction/index
     best_practices
