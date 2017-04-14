@@ -11,4 +11,8 @@ Let's get started with the basics to Ansible. We will cover installation, gettin
     getting_started
     understanding_yaml
     inventory
+    dynamic_inventory
+    patterns
+    ad_hoc
+    configuration_file
     best_practices
