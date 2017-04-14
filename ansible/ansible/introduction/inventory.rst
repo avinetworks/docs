@@ -67,3 +67,43 @@ If you are running non-standard SSH ports on your hosts you can also specify the
 .. code-block:: ini
 
   host.example.com:2222
+
+**************
+Host Patterns
+**************
+
+In an inventory file we can also define multiple hosts with one entry. You can specify numeric ranges, as well as alphabetic ranges.
+
+Numeric range example:
+
+.. code-block:: ini
+
+  host[1:10].example.com
+
+Alphabetic range example:
+
+.. code-block:: ini
+
+  server1[a:e].example.com
+
+*************************
+Host Entry Components
+*************************
+
+``<alias> <special variables> <variables>``
+
+host alias:
+  can be a hostname or just an alias, if using an alias, you will need to specify the special variable ``ansible_host=10.20.20.10``
+
+special variables:
+  there are many of these, they include the `Behavioral Inventory Parameters`
+
+variables:
+  these are variables you want to define specifically to a host that would be used in your playbooks
+
+
+******************
+Special Variables
+******************
+
+These are also known commonly as `Behavioral Inventory Parameters` and can all be found here: http://docs.ansible.com/ansible/intro_inventory.html#list-of-behavioral-inventory-parameters
