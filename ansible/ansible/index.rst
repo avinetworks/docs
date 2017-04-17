@@ -15,4 +15,3 @@ Avi Networks recognizes how automation using Ansible is drastically changing the
 
     introduction/index
     playbooks/index
-    best_practices
