@@ -2,6 +2,9 @@
 Playbooks
 #########
 
+.. contents::
+  :local:
+  
 Ansible's configuration language is put into a Playbook. Playbooks have many components including hosts, variables, tasks, etc. We will cover all of these components and more throughout this section. Another way to look at playbooks is as a instruction for Ansible to orchestrate, provision, deploy, and configure your environment.
 
 Playbooks can contain a list one or multiple plays. Each play can target the same or different systems, but plays are usually targetted to a specific group of systems.
@@ -118,3 +121,69 @@ It's really up to you, however the first is usually cleaner on some modules, whi
 If a task fails please keep in mind the playbook will stop. You will need to fix the task, then you will need to rerun the playbook. Because of this idempotency is extremely important. If you do not ensure idempotency of your tasks you will possibly run the same command twice.
 
 When using ``shell`` or ``command`` modules they will run the command again. To prevent this you should use a ``creates`` flag or use ``when`` and have a previous task register if the task needs to run again.
+
+.. note::
+
+  ``command`` and ``shell`` modules are the only modules that do not follow key=value format. They are in the free form format of ``shell: cat myfile`` or ``command: cat myfile``.
+
+You can also ignore errors if your command task results in a ``1`` or if a module fails. To ignore errors simply add ``ignore_errors: True`` to your task.
+
+.. code-block:: yaml
+
+  tasks:
+    - name: get contents of myfile
+      shell: cat myfile
+      ignore_errors: True
+
+You can also use previously defined variables in your tasks.
+
+.. code-block:: yaml
+
+  vars:
+    filename: myfile
+  tasks:
+    - name: get contents of {{ filename }}
+      shell: cat {{ filename }}
+
+********
+Handlers
+********
+
+Ansible also has an event system which allows tasks to trigger actions. To take advantage of this we have "Handlers". Handlers can be called using the ``notify`` option on tasks. A nice benefit to this is when you have multiple files that when edited need to restart a service, will notify the hander task which will signal it to run at the end of a play. If multiple files need to restart the same service, it will only restart the service once at the end of the play (instead of multiple times). An example of this is below:
+
+.. code-block:: yaml
+
+  handlers:
+    - name: restart service
+      service: name=service state=restarted
+  tasks:
+    - name: modify config file
+      template: src=config.j2 dest=/etc/config.conf
+      notify: restart service
+
+This will tell Ansible that at the end of the play it will restart the service.
+
+For more information on handlers please visit: http://docs.ansible.com/ansible/playbooks_intro.html#handlers-running-operations-on-change
+
+*******************
+Executing Playbooks
+*******************
+
+To execute a playbook, you can simply follow this format:
+
+.. code-block:: bash
+
+  ansible-playbook playbook.yml
+
+There are many options that can be used alongside the ansible-playbook command. To view these please use ``ansible-playbook --help``.
+
+Checking Syntax
+===============
+
+The ``ansible-playbook`` command can also be used to validate the syntax of your playbook without executing it against the remote hosts. This will help prevent errors from causing mid play crashes and other issues. To do this use the following command.
+
+.. code-block:: bash
+
+  ansible-playbook playbook.yml --syntax-check
+
+This is extremely useful as a way to lint test your playbooks.
