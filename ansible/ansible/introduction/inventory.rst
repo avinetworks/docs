@@ -90,7 +90,8 @@ Alphabetic range example:
 Host Entry Components
 *************************
 
-``<alias> <special variables> <variables>``
+::
+  <alias> <special variables> <variables>
 
 host alias:
   can be a hostname or just an alias, if using an alias, you will need to specify the special variable ``ansible_host=10.20.20.10``
