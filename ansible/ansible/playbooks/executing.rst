@@ -10,6 +10,16 @@ To execute a playbook, you can simply follow this format:
 
 There are many options that can be used alongside the ansible-playbook command. To view these please use ``ansible-playbook --help``.
 
+Passing Variables
+=================
+
+When executing the playbook command, we can also pass variables via the command line. To do so we will use the following command:
+
+.. code-block:: shell
+
+  ansible-playbook playbook.yml --extra-vars "variable=value variable2=value2"
+
+
 ***************
 Checking Syntax
 ***************

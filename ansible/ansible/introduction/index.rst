@@ -15,4 +15,3 @@ Let's get started with the basics to Ansible. We will cover installation, gettin
     patterns
     ad_hoc
     configuration_file
-    best_practices
