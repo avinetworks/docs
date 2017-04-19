@@ -376,9 +376,110 @@ For example:
 
   - hosts: all
     tasks:
-      - stat: /tmp
+      - stat: path=/tmp
         register: tmp_folder_data
 
       - debug: msg={{ tmp_folder_data }}
 
 This sniplet would look for ``/tmp`` on the remote host, and get the information of that folder as per the ``stat`` module, and then provide us with all the information of that folder by the debug module and printing it to output.
+
+************************
+Accessing Variable Data
+************************
+
+Sometimes our variables may have more data to them than just a single value. For example the previous example of using ``stat`` module. It returned a bunch of information to us.
+
+.. code-block:: json
+
+  ok: [localhost] => {
+      "tmp_data": {
+          "changed": false,
+          "stat": {
+              "atime": 1481748353.0,
+              "ctime": 1492640380.9926686,
+              "dev": 1,
+              "executable": true,
+              "exists": true,
+              "gid": 0,
+              "gr_name": "root",
+              "inode": 281474977014021,
+              "isblk": false,
+              "ischr": false,
+              "isdir": true,
+              "isfifo": false,
+              "isgid": false,
+              "islnk": false,
+              "isreg": false,
+              "issock": false,
+              "isuid": false,
+              "mode": "1777",
+              "mtime": 1492640380.9926686,
+              "nlink": 2,
+              "path": "/tmp",
+              "pw_name": "root",
+              "readable": true,
+              "rgrp": true,
+              "roth": true,
+              "rusr": true,
+              "size": 0,
+              "uid": 0,
+              "wgrp": true,
+              "woth": true,
+              "writeable": true,
+              "wusr": true,
+              "xgrp": true,
+              "xoth": true,
+              "xusr": true
+          }
+      }
+  }
+
+To access a specific item for example ``exists``, in this object we can use two types of notation.
+
+.. code-block:: jinja
+
+  {{ tmp_data["stat"]["exists"] }}
+
+.. code-block:: jinja
+
+  {{ tmp_data.stat.exists }}
+
+Both will return ``true`` as the result.
+
+To access the first element of an array we would use ``data[0]``.
+
+*******************
+Variable Precedence
+*******************
+
+Because of how many possible places we can put a variable, we will need to understand variable precedence. Top of the list is the weakest, bottom is the strongest.
+
+- role defaults
+- inventory INI or script group vars
+- inventory group_vars/all
+- playbook group_vars/all
+- inventory group_vars/*
+- playbook group_vars/*
+- inventory INI or script host vars
+- inventory host_vars/*
+- playbook host_vars/*
+- host facts
+- play vars
+- play vars_prompt
+- play vars_files
+- role vars (defined in role/vars/main.yml)
+- block vars (only for tasks in block)
+- task vars (only for the task)
+- role (and include_role) params
+- include params
+- include_vars
+- set_facts / registered vars
+- extra vars (always win precedence)
+
+Extra vars are what we specify on the command line as we talked about earlier with ``-e`` or ``--extra-vars``.
+
+There are also 3 types of variable scopes, `Global`, `Play`, and `Host`.
+
+- Global is set via command line, Environment Variable, or using the config file.
+- Play is set in the play, using vars entries, include_vars, role defaults, and vars.
+- Host is set in the inventory, facts, or registered output from tasks.

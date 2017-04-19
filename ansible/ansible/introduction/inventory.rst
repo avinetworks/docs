@@ -114,8 +114,8 @@ When looking to use hosts without an inventory file, we can specify the ``ansibl
 
 If you noticed we added the ``,`` after the hostname. This specifies to Ansible that we want to use a comma separated list of hosts not related to the hosts file.
 
-******************
-Special Variables
-******************
+*******************************
+Behavioral Inventory Parameters
+*******************************
 
 These are also known commonly as `Behavioral Inventory Parameters` and can all be found here: http://docs.ansible.com/ansible/intro_inventory.html#list-of-behavioral-inventory-parameters
