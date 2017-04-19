@@ -8,6 +8,8 @@ Playbooks
   components
   executing
   variables
+  loops
+  blocks
   best_practices
 
 Ansible's configuration language is put into a Playbook. Playbooks have many components including hosts, variables, tasks, etc. We will cover all of these components and more throughout this section. Another way to look at playbooks is as a instruction for Ansible to orchestrate, provision, deploy, and configure your environment.
