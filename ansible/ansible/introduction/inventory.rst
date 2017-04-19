@@ -102,6 +102,17 @@ special variables:
 variables:
   these are variables you want to define specifically to a host that would be used in your playbooks
 
+****************************
+Using Hosts not in Inventory
+****************************
+
+When looking to use hosts without an inventory file, we can specify the ``ansible-playbook`` or ``ansible`` ad-hoc command as
+
+.. code-block:: shell
+
+  ansible-playbook -i hostname, playbook.yml
+
+If you noticed we added the ``,`` after the hostname. This specifies to Ansible that we want to use a comma separated list of hosts not related to the hosts file.
 
 ******************
 Special Variables
