@@ -206,6 +206,7 @@ Registered Variables with Loops
 When using ``register`` with a loop the results will contain a list of the responses. This can be very useful when registering host creation and getting the servers from the array from the task.
 
 .. code-block:: yaml
+
   tasks:
     - name: Provision a set of instances
       ec2:
@@ -227,8 +228,30 @@ When using ``register`` with a loop the results will contain a list of the respo
         - server2
         - server3
 
-This would then return an array of results, which each would contain IP addresses and other data from the AWS api call.
+This would then return an array of results, which each would contain IP addresses and other data from the AWS api call. We can then use the returned data to add servers to a group, create an array to submit to a controller as new pool servers as well.
 
 .. code-block:: yaml
 
   # Value returned from Ansible
+
+***********************
+Looping over Inventory
+***********************
+
+If you want to loop over a group of inventory hosts or a subset you can use ``with_items`` and the variable ``play_hosts`` or using the ``group`` variable. Play hosts would use the hosts assigned to the current play in the playbook. Group variable usage is ``groups['groupname']`` and would use all of the hosts in the declared group.
+
+This example would give us a list of all the hosts in the current play.
+
+.. code-block:: yaml
+
+  - debug: msg={{ item }}
+    with_items:
+      - "{{ play_hosts }}"
+
+This example would give us a list of all the hosts in the group we specified in this case ``servers``.
+
+.. code-block:: yaml
+
+  - debug: msg={{ item }}
+    with_items:
+      - "{{ groups['servers']}}"
