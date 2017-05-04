@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Avi SE Role &mdash; Avi Networks Ansible 17.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Avi Networks Ansible 17.1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Bare-metal Avi Deployment" href="baremetal/index.html"/>
+        <link rel="prev" title="Avi OpenStack Deployment with Ansible" href="../controller/openstack/index.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Avi Networks Ansible
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                17.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../controller/index.html">Avi Controller Role</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Avi SE Role</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#deploying-avi-se">Deploying Avi SE</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="baremetal/index.html">Bare-metal Avi Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="csp/index.html">Cisco CSP Avi Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="openshift/index.html">OpenShift Avi Deployment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../docker/index.html">Avi Docker Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../network_interfaces/index.html">Avi Network Interfaces Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Avi Ansible Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Avi Networks Ansible</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Avi SE Role</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/serviceengine/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="avi-se-role">
+<h1>Avi SE Role<a class="headerlink" href="#avi-se-role" title="Permalink to this headline">¶</a></h1>
+<p>To help automate the deployment of Avi Vantage Service Engine in your environment we&#8217;ve developed an Ansible Role which can deploy in many environemnts. This includes deploying from Docker Hub, Private Docker Repo, Docker compressed images (tgz), as well as some cloud environments including CSP deployment.</p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>To get started you will need the following:</p>
+<ul class="simple">
+<li>Ansible 2.2 or higher</li>
+<li>Server or Cloud to install Avi Controller on (Baremetal, CSP, etc.)</li>
+<li>Pre-existing Avi Controller</li>
+</ul>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>Ansible Role can take parameters, these parameters can determine where and how Ansible will execute the installation and configuration of the Avi Vantage Service Engine.</p>
+<p>Due to the fast pace of features and parameters that get added we will not include them here directly, but they can be accessed in two places. In our public GitHub repository (<a class="reference external" href="https://github.com/avinetworks/ansible-role-avise">https://github.com/avinetworks/ansible-role-avise</a>) or in the Ansible Galaxy (<a class="reference external" href="https://galaxy.ansible.com/avinetworks/avise/">https://galaxy.ansible.com/avinetworks/avise/</a>). The readme includes all possible parameters.</p>
+</div>
+<div class="section" id="deploying-avi-se">
+<h2>Deploying Avi SE<a class="headerlink" href="#deploying-avi-se" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="baremetal/index.html">Bare-metal Avi Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="baremetal/docker_hub.html">Using Docker Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baremetal/private_repository.html">Using a Private Docker Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baremetal/compressed_image.html">Using a Compressed Docker Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="baremetal/index.html#requirements">Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="csp/index.html">Cisco CSP Avi Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="csp/index.html#requirements">Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="csp/index.html#using-qcow-image">Using QCOW image</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openshift/index.html">OpenShift Avi Deployment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openshift/docker_hub.html">Using Docker Hub</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift/private_repository.html">Using a Private Docker Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift/compressed_image.html">Using a Compressed Docker Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openshift/index.html#requirements">Requirements</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="baremetal/index.html" class="btn btn-neutral float-right" title="Bare-metal Avi Deployment" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../controller/openstack/index.html" class="btn btn-neutral" title="Avi OpenStack Deployment with Ansible" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avi Networks.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'17.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

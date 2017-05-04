@@ -1,0 +1,317 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Docker Hub &mdash; Avi Networks Ansible 17.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Avi Networks Ansible 17.1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="OpenShift Avi Deployment" href="index.html"/>
+        <link rel="next" title="Using a Private Docker Repository" href="private_repository.html"/>
+        <link rel="prev" title="OpenShift Avi Deployment" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Avi Networks Ansible
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                17.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../controller/index.html">Avi Controller Role</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Avi SE Role</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../index.html#parameters">Parameters</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#deploying-avi-se">Deploying Avi SE</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../baremetal/index.html">Bare-metal Avi Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../csp/index.html">Cisco CSP Avi Deployment</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">OpenShift Avi Deployment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../docker/index.html">Avi Docker Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../network_interfaces/index.html">Avi Network Interfaces Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Avi Ansible Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Avi Networks Ansible</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Avi SE Role</a> &raquo;</li>
+        
+          <li><a href="index.html">OpenShift Avi Deployment</a> &raquo;</li>
+        
+      <li>Using Docker Hub</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/serviceengine/openshift/docker_hub.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-docker-hub">
+<h1>Using Docker Hub<a class="headerlink" href="#using-docker-hub" title="Permalink to this headline">¶</a></h1>
+<p>Deploying Avi Controller from the Docker Hub is the default action. However it does require the server to have internet access to Docker Hub as it will download the image.</p>
+<div class="section" id="steps">
+<h2>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Install the Avi Controller role on the host you are executing from.</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>sudo ansible-galaxy -f avinetworks.avicontroller
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li>Identify how we want to define our hosts. Ansible can accept hosts three ways: command-line, by inventory file, or by dynamic inventory file. We will use an inventory in this case. Ansible by default uses /etc/ansible/hosts as it&#8217;s default inventory. Lets add this segment to the bottom of the page.</li>
+</ol>
+<blockquote>
+<div><div class="highlight-text"><div class="highlight"><pre><span></span>[avicontrollers]
+10.120.202.24
+</pre></div>
+</div>
+<p>Replace the IP with the IP of your baremetal host you want to deploy to.</p>
+</div></blockquote>
+<ol class="arabic simple" start="3">
+<li>Create the playbook. It should look similar to this</li>
+</ol>
+<blockquote>
+<div><div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># myplaybook.yml</span>
+<span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">avicontrollers</span>
+  <span class="l l-Scalar l-Scalar-Plain">become</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">avinetworks.avicontroller</span>
+      <span class="l l-Scalar l-Scalar-Plain">con_controller_ip</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.120.202.24</span>
+      <span class="l l-Scalar l-Scalar-Plain">con_cores</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">4</span>
+      <span class="l l-Scalar l-Scalar-Plain">con_memory_gb</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">16</span>
+</pre></div>
+</div>
+<p>However, there are are many possible values which can be found on the roles README file (<a class="reference external" href="https://github.com/avinetworks/ansible-role-avicontroller">https://github.com/avinetworks/ansible-role-avicontroller</a>). Each one allows customization of the deployment.</p>
+<p>In this playbook we are specifying that this &#8220;play&#8221; should apply to the &#8220;avicontrollers&#8221; hosts. Which we have previously defined in the inventory file. We are also specifying that the controllers IP is 10.10.27.101, this is used to properly determine the interface that the controller will use. We are then specifying the core count that the controller will use. This is the amount of cores that docker will be permitted to use for the controller. Then we specify the amount of memory in GB that the controller will be permitted to use. We recommend using 16GB or more.</p>
+</div></blockquote>
+<ol class="arabic simple" start="4">
+<li>Verify your local user has access to the hosts you are deploying the controller to. You will need <cite>sudo</cite> access as well. Login using your current user.</li>
+</ol>
+<blockquote>
+<div><div class="highlight-bash"><div class="highlight"><pre><span></span>ssh <span class="m">10</span>.120.202.24
+</pre></div>
+</div>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li>Execute the playbook.</li>
+</ol>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>If you are not using an ssh-key you will also need to specify <cite>&#8211;ask-pass</cite> to ansible.</li>
+<li>If your current user is different you will need to specify <cite>-u &lt;username&gt;</cite> to ansible.</li>
+</ul>
+</div>
+<div class="code Bash highlight-default"><div class="highlight"><pre><span></span><span class="n">ansible</span><span class="o">-</span><span class="n">playbook</span> <span class="n">myplaybook</span><span class="o">.</span><span class="n">yml</span> <span class="o">-</span><span class="n">u</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span> <span class="o">--</span><span class="n">ask</span><span class="o">-</span><span class="k">pass</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="private_repository.html" class="btn btn-neutral float-right" title="Using a Private Docker Repository" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="OpenShift Avi Deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avi Networks.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'17.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

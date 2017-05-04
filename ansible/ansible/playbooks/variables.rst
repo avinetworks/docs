@@ -39,6 +39,19 @@ Using "dot" notation the following are reserved as they are python methods:
 Inventory Variables
 *******************
 
+Host vars
+=========
+To specify variables in your inventory files for a specific host, you would use the following ``key=value`` format.
+
+.. code-block:: ini
+
+  host1 key1=value1 key2=value2
+
+This will provide the host with ``key1`` and ``key2``, which will be used in the playbooks and ad-hoc commands referencing this host.
+
+
+Group vars
+==========
 To specify variables in your inventory files you would put the variable on the same line in ``key=value`` format.
 
 To specify group variables in an inventory file:
@@ -117,7 +130,7 @@ Sometimes our variables may have more data to them than just a single value. For
 
 .. code-block:: json
 
-  ok: [localhost] => {
+  {
       "tmp_data": {
           "changed": false,
           "stat": {
@@ -430,7 +443,7 @@ The ``default()`` filter allows us to provide a default to a variable if it's no
 
 .. code-block:: jinja
 
-  {{ my_string | default('You didn't provide a string')}}
+  {{ my_string|default('You didn't provide a string')}}
 
 Would provide the result ``You didn't provide a string`` if ``my_string`` wasn't defined.
 

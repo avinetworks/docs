@@ -4,7 +4,7 @@ Getting Started
 
 .. contents::
   :local:
-  
+
 **********************
 How does Ansible Work?
 **********************
@@ -22,19 +22,6 @@ By default, Ansible will attempt to use your SSH key to authenticate the current
 ``--user <myuser>``
   option to allow us to supply a user for login to the remote host
 
-********************
-Testing Connectivity
-********************
-
-When using Ansible, we rely on connectivity to the remote host via ssh. To test if we can connect we can use
-
-.. code-block:: shell
-
-  ansible 10.20.10.200 -m ping -u root --ask-pass
-
-This command will connect over SSH to the remote host and verify connectivity. We will explain later more about this type of Ansible command.
-
-
 *****************
 Host Key Checking
 *****************
@@ -51,3 +38,15 @@ You can also use an environment variable, however I do discourage this practice 
 .. code-block:: shell
 
   export ANSIBLE_HOST_KEY_CHECKING=False
+
+********************
+Testing Connectivity
+********************
+
+When using Ansible, we rely on connectivity to the remote host via ssh. To test if we can connect we can use
+
+.. code-block:: shell
+
+  ansible 10.20.10.200 -m ping -u root --ask-pass
+
+This command will connect over SSH to the remote host and verify connectivity. We will explain later more about this type of Ansible command.

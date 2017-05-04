@@ -57,15 +57,22 @@ Loops can also be nested:
 
 .. code-block:: yaml
 
-  - name: give multiple users access to multiple databases
-    mysql_user:
-      name: "{{ item[0] }}"
-      priv: "{{ item[1] }}.*:ALL"
-      append_privs: yes
-      password: "password"
-    with_nested:
-      - [ 'user1', 'user2' ]
-      - [ 'database1', 'database2', 'database3' ]
+  vars:
+    ip_addresses:
+      - 10.10.20.21
+      - 10.10.20.22
+      - 10.10.20.23
+    ports: ['80','443']
+  tasks:
+    - name: give multiple users access to multiple databases
+      mysql_user:
+        name: "{{ item[0] }}"
+        priv: "{{ item[1] }}.*:ALL"
+        append_privs: yes
+        password: "password"
+      with_nested:
+        - [ '', 'user2' ]
+        - [ 'database1', 'database2', 'database3' ]
 
 You can also use a variable with a list.
 

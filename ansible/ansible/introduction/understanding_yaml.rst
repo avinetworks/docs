@@ -25,7 +25,7 @@ In YAML we display dictionaries as key-value pairs. Also know as hashes. In YAML
 
   key: value
 
-In python it would convert to, which just so happens to be the same as a json dictionary.
+In json it would convert to, which just so happens to be the same as a json dictionary.
 
 .. code-block:: python
 

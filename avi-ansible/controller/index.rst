@@ -32,3 +32,5 @@ Deploying Avi Controller
     baremetal/index
     csp/index
     openshift/index
+    aws/index
+    openstack/index
