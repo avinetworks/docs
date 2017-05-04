@@ -51,7 +51,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Avi Networks Ansible'
+project = u'Avi Ansible Integration'
 copyright = u'2017, Avi Networks'
 author = u'Avi Networks'
 
