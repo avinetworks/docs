@@ -1,0 +1,338 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; Avi Networks Ansible 17.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Avi Networks Ansible 17.1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Introduction" href="index.html"/>
+        <link rel="next" title="Getting Started" href="getting_started.html"/>
+        <link rel="prev" title="Introduction" href="index.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Avi Networks Ansible
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                17.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Ansible</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#what-is-ansible">What is Ansible?</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#our-automation">Our Automation</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../playbooks/index.html">Playbooks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../controller/index.html">Avi Controller Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../serviceengine/index.html">Avi SE Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docker/index.html">Avi Docker Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../network_interfaces/index.html">Avi Network Interfaces Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Avi Ansible Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Avi Networks Ansible</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Ansible</a> &raquo;</li>
+        
+          <li><a href="index.html">Introduction</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ansible/introduction/installation.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#chosing-a-version" id="id2">Chosing a Version</a></li>
+<li><a class="reference internal" href="#requirements" id="id3">Requirements</a></li>
+<li><a class="reference internal" href="#installing-ansible" id="id4">Installing Ansible</a><ul>
+<li><a class="reference internal" href="#installing-via-yum" id="id5">Installing via YUM</a></li>
+<li><a class="reference internal" href="#installing-via-apt" id="id6">Installing via Apt</a></li>
+<li><a class="reference internal" href="#installing-via-pip" id="id7">Installing via Pip</a></li>
+<li><a class="reference internal" href="#installing-via-brew" id="id8">Installing via Brew</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="chosing-a-version">
+<h2><a class="toc-backref" href="#id2">Chosing a Version</a><a class="headerlink" href="#chosing-a-version" title="Permalink to this headline">¶</a></h2>
+<p>We recommend using the latest major release available. Our playbooks, roles, and modules have been developed on 2.2, so we would recommend that version or later. However, 2.1 can be used but may have occasional issues on some of our playbooks, roles, and modules.</p>
+</div>
+<div class="section" id="requirements">
+<h2><a class="toc-backref" href="#id3">Requirements</a><a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Ansible can be ran from any machine running Python 2.6 or 2.7. In Ansible 2.2, a preview version of Python 3 support was added.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Some modules and plugins will have additional requirements. Some may be libraries on the local machine, and some on remote machines. Please check the module documentation prior to executing the module.</p>
+</div>
+<p>For further installation requirements please visit Ansible&#8217;s Installation documentation at <a class="reference external" href="http://docs.ansible.com/ansible/intro_installation.html">http://docs.ansible.com/ansible/intro_installation.html</a></p>
+</div>
+<div class="section" id="installing-ansible">
+<h2><a class="toc-backref" href="#id4">Installing Ansible</a><a class="headerlink" href="#installing-ansible" title="Permalink to this headline">¶</a></h2>
+<p>Ansible is available through many package repositories including EPEL, Apt, YUM, Portage, and many more. Here I will cover the most common ways to deploy Ansible to a host.</p>
+<div class="contents local topic" id="id1">
+<ul class="simple">
+<li><a class="reference internal" href="#installing-via-yum" id="id9">Installing via YUM</a></li>
+<li><a class="reference internal" href="#installing-via-apt" id="id10">Installing via Apt</a></li>
+<li><a class="reference internal" href="#installing-via-pip" id="id11">Installing via Pip</a></li>
+<li><a class="reference internal" href="#installing-via-brew" id="id12">Installing via Brew</a></li>
+</ul>
+</div>
+<div class="section" id="installing-via-yum">
+<h3><a class="toc-backref" href="#id9">Installing via YUM</a><a class="headerlink" href="#installing-via-yum" title="Permalink to this headline">¶</a></h3>
+<p>RPMs for Ansible are located in the EPEL repository. You will need to enable this repository on your host. To install EPEL on most recent operating systems use the following command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum install epel-release
+</pre></div>
+</div>
+<p>This will install the EPEL repository form your base OS repository. If this fails, you can also try and use the following command. Please modify &lt;version&gt; with the correct version of your distribution.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo rpm -ivh https://dl.fedoraproject.org/pub/epel/epel-release-latest-&lt;version&gt;.noarch.rpm
+</pre></div>
+</div>
+<p>Once EPEL is installed you will be able to simply run the following command, which will install Ansible from EPEL onto your host.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo yum install ansible
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-via-apt">
+<h3><a class="toc-backref" href="#id10">Installing via Apt</a><a class="headerlink" href="#installing-via-apt" title="Permalink to this headline">¶</a></h3>
+<p>Ansible is not included in any of Ubuntu&#8217;s repositories, and needs to be installed via PPA. To use PPA you will need to run the following commands. These commands will install the proper package tools to add the PPA repository, and update your cache, and then install the Ansible package.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get install software-properties-common
+sudo apt-add-repository ppa:ansible/ansible
+sudo apt-get update
+sudo apt-get install ansible
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-via-pip">
+<h3><a class="toc-backref" href="#id11">Installing via Pip</a><a class="headerlink" href="#installing-via-pip" title="Permalink to this headline">¶</a></h3>
+<p>Ansible can also be installed via Pip. Pip is a Python package manager. If it is not already available on your system you may install it with the following command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo easy_install pip
+</pre></div>
+</div>
+<p>Then to install Ansible the following command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo pip install ansible
+</pre></div>
+</div>
+<p>It has been documented that on OS X Mavericks there could be issues with the compiler. To work around the issue use the following command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo <span class="nv">CFLAGS</span><span class="o">=</span>-Qunused-arguments <span class="nv">CPPFLAGS</span><span class="o">=</span>-Qunused-arguments pip install ansible
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-via-brew">
+<h3><a class="toc-backref" href="#id12">Installing via Brew</a><a class="headerlink" href="#installing-via-brew" title="Permalink to this headline">¶</a></h3>
+<p>Mac OSX has an awesome utility called brew, which is available if Homebrew is installed. If installed, to install ansible becomes one simple command.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>brew install ansible
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="getting_started.html" class="btn btn-neutral float-right" title="Getting Started" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avi Networks.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'17.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

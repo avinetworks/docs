@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Variables &mdash; Avi Networks Ansible 17.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../genindex.html"/>
+        <link rel="search" title="Search" href="../../search.html"/>
+    <link rel="top" title="Avi Networks Ansible 17.1.0 documentation" href="../../index.html"/>
+        <link rel="up" title="Playbooks" href="index.html"/>
+        <link rel="next" title="Loops" href="loops.html"/>
+        <link rel="prev" title="Executing Playbooks" href="executing.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> Avi Networks Ansible
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                17.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Ansible</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html#what-is-ansible">What is Ansible?</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html#our-automation">Our Automation</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../introduction/index.html">Introduction</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Playbooks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../controller/index.html">Avi Controller Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../serviceengine/index.html">Avi SE Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docker/index.html">Avi Docker Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../network_interfaces/index.html">Avi Network Interfaces Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../modules/index.html">Avi Ansible Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Avi Networks Ansible</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Ansible</a> &raquo;</li>
+        
+          <li><a href="index.html">Playbooks</a> &raquo;</li>
+        
+      <li>Variables</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/ansible/playbooks/variables.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="variables">
+<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h1>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#rules-of-variables" id="id1">Rules of Variables</a></li>
+<li><a class="reference internal" href="#inventory-variables" id="id2">Inventory Variables</a><ul>
+<li><a class="reference internal" href="#host-vars" id="id3">Host vars</a></li>
+<li><a class="reference internal" href="#group-vars" id="id4">Group vars</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#playbook-variables" id="id5">Playbook Variables</a></li>
+<li><a class="reference internal" href="#included-files-and-roles" id="id6">Included files and roles</a></li>
+<li><a class="reference internal" href="#registered-variables" id="id7">Registered Variables</a></li>
+<li><a class="reference internal" href="#accessing-variable-data" id="id8">Accessing Variable Data</a></li>
+<li><a class="reference internal" href="#variable-precedence" id="id9">Variable Precedence</a></li>
+<li><a class="reference internal" href="#ansible-facts" id="id10">Ansible Facts</a></li>
+<li><a class="reference internal" href="#using-variables-in-jinja-templates" id="id11">Using Variables in Jinja Templates</a></li>
+<li><a class="reference internal" href="#using-variables-in-tasks" id="id12">Using Variables in Tasks</a></li>
+<li><a class="reference internal" href="#jinja-filters" id="id13">Jinja Filters</a><ul>
+<li><a class="reference internal" href="#math-operators" id="id14">Math Operators</a></li>
+<li><a class="reference internal" href="#comparisons" id="id15">Comparisons</a></li>
+<li><a class="reference internal" href="#logic" id="id16">Logic</a></li>
+<li><a class="reference internal" href="#other-operators" id="id17">Other Operators</a></li>
+<li><a class="reference internal" href="#ipaddr" id="id18">ipaddr</a></li>
+<li><a class="reference internal" href="#default" id="id19">default</a></li>
+<li><a class="reference internal" href="#join" id="id20">join</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#python-methods" id="id21">Python Methods</a><ul>
+<li><a class="reference internal" href="#split" id="id22">split</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Using Ansible we can also use variables to use the same playbooks, plays, tasks, etc.  We can also create variables by registering the results from previous tasks. Variables can also be used in Conditionals and Loops.</p>
+<div class="section" id="rules-of-variables">
+<h2><a class="toc-backref" href="#id1">Rules of Variables</a><a class="headerlink" href="#rules-of-variables" title="Permalink to this headline">¶</a></h2>
+<p>Variables must:</p>
+<ul class="simple">
+<li>start with a letter</li>
+<li>not include a <code class="docutils literal"><span class="pre">-</span></code>, a space, or <code class="docutils literal"><span class="pre">.</span></code></li>
+<li>not be a number</li>
+</ul>
+<p>Examples of invalid variables are <code class="docutils literal"><span class="pre">123</span></code>, <code class="docutils literal"><span class="pre">variable-name</span></code>, <code class="docutils literal"><span class="pre">variable</span> <span class="pre">name</span></code>, and <code class="docutils literal"><span class="pre">variable.name</span></code>.</p>
+<p>Valid ones can be <code class="docutils literal"><span class="pre">variable</span></code>, <code class="docutils literal"><span class="pre">variable_name</span></code>, and <code class="docutils literal"><span class="pre">variable1</span></code></p>
+<p>You can also use dictionaries which are supported to map keys to values.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">variable</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">key1</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
+  <span class="l l-Scalar l-Scalar-Plain">key2</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
+</pre></div>
+</div>
+<p>The previous variable can be referenced by either <code class="docutils literal"><span class="pre">variable['key1']</span></code> or by <code class="docutils literal"><span class="pre">variable.key1</span></code> however you cannot define them in that way, this only works one direction.</p>
+<p>Using &#8220;dot&#8221; notation the following are reserved as they are python methods:</p>
+<p><code class="docutils literal"><span class="pre">add</span></code>, <code class="docutils literal"><span class="pre">append</span></code>, <code class="docutils literal"><span class="pre">as_integer_ratio</span></code>, <code class="docutils literal"><span class="pre">bit_length</span></code>, <code class="docutils literal"><span class="pre">capitalize</span></code>, <code class="docutils literal"><span class="pre">center</span></code>, <code class="docutils literal"><span class="pre">clear</span></code>, <code class="docutils literal"><span class="pre">conjugate</span></code>, <code class="docutils literal"><span class="pre">copy</span></code>, <code class="docutils literal"><span class="pre">count</span></code>, <code class="docutils literal"><span class="pre">decode</span></code>, <code class="docutils literal"><span class="pre">denominator</span></code>, <code class="docutils literal"><span class="pre">difference</span></code>, <code class="docutils literal"><span class="pre">difference_update</span></code>, <code class="docutils literal"><span class="pre">discard</span></code>, <code class="docutils literal"><span class="pre">encode</span></code>, <code class="docutils literal"><span class="pre">endswith</span></code>, <code class="docutils literal"><span class="pre">expandtabs</span></code>, <code class="docutils literal"><span class="pre">extend</span></code>, <code class="docutils literal"><span class="pre">find</span></code>, <code class="docutils literal"><span class="pre">format</span></code>, <code class="docutils literal"><span class="pre">fromhex</span></code>, <code class="docutils literal"><span class="pre">fromkeys</span></code>, <code class="docutils literal"><span class="pre">get</span></code>, <code class="docutils literal"><span class="pre">has_key</span></code>, <code class="docutils literal"><span class="pre">hex</span></code>, <code class="docutils literal"><span class="pre">imag</span></code>, <code class="docutils literal"><span class="pre">index</span></code>, <code class="docutils literal"><span class="pre">insert</span></code>, <code class="docutils literal"><span class="pre">intersection</span></code>, <code class="docutils literal"><span class="pre">intersection_update</span></code>, <code class="docutils literal"><span class="pre">isalnum</span></code>, <code class="docutils literal"><span class="pre">isalpha</span></code>, <code class="docutils literal"><span class="pre">isdecimal</span></code>, <code class="docutils literal"><span class="pre">isdigit</span></code>, <code class="docutils literal"><span class="pre">isdisjoint</span></code>, <code class="docutils literal"><span class="pre">is_integer</span></code>, <code class="docutils literal"><span class="pre">islower</span></code>, <code class="docutils literal"><span class="pre">isnumeric</span></code>, <code class="docutils literal"><span class="pre">isspace</span></code>, <code class="docutils literal"><span class="pre">issubset</span></code>, <code class="docutils literal"><span class="pre">issuperset</span></code>, <code class="docutils literal"><span class="pre">istitle</span></code>, <code class="docutils literal"><span class="pre">isupper</span></code>, <code class="docutils literal"><span class="pre">items</span></code>, <code class="docutils literal"><span class="pre">iteritems</span></code>, <code class="docutils literal"><span class="pre">iterkeys</span></code>, <code class="docutils literal"><span class="pre">itervalues</span></code>, <code class="docutils literal"><span class="pre">join</span></code>, <code class="docutils literal"><span class="pre">keys</span></code>, <code class="docutils literal"><span class="pre">ljust</span></code>, <code class="docutils literal"><span class="pre">lower</span></code>, <code class="docutils literal"><span class="pre">lstrip</span></code>, <code class="docutils literal"><span class="pre">numerator</span></code>, <code class="docutils literal"><span class="pre">partition</span></code>, <code class="docutils literal"><span class="pre">pop</span></code>, <code class="docutils literal"><span class="pre">popitem</span></code>, <code class="docutils literal"><span class="pre">real</span></code>, <code class="docutils literal"><span class="pre">remove</span></code>, <code class="docutils literal"><span class="pre">replace</span></code>, <code class="docutils literal"><span class="pre">reverse</span></code>, <code class="docutils literal"><span class="pre">rfind</span></code>, <code class="docutils literal"><span class="pre">rindex</span></code>, <code class="docutils literal"><span class="pre">rjust</span></code>, <code class="docutils literal"><span class="pre">rpartition</span></code>, <code class="docutils literal"><span class="pre">rsplit</span></code>, <code class="docutils literal"><span class="pre">rstrip</span></code>, <code class="docutils literal"><span class="pre">setdefault</span></code>, <code class="docutils literal"><span class="pre">sort</span></code>, <code class="docutils literal"><span class="pre">split</span></code>, <code class="docutils literal"><span class="pre">splitlines</span></code>, <code class="docutils literal"><span class="pre">startswith</span></code>, <code class="docutils literal"><span class="pre">strip</span></code>, <code class="docutils literal"><span class="pre">swapcase</span></code>, <code class="docutils literal"><span class="pre">symmetric_difference</span></code>, <code class="docutils literal"><span class="pre">symmetric_difference_update</span></code>, <code class="docutils literal"><span class="pre">title</span></code>, <code class="docutils literal"><span class="pre">translate</span></code>, <code class="docutils literal"><span class="pre">union</span></code>, <code class="docutils literal"><span class="pre">update</span></code>, <code class="docutils literal"><span class="pre">upper</span></code>, <code class="docutils literal"><span class="pre">values</span></code>, <code class="docutils literal"><span class="pre">viewitems</span></code>, <code class="docutils literal"><span class="pre">viewkeys</span></code>, <code class="docutils literal"><span class="pre">viewvalues</span></code>, <code class="docutils literal"><span class="pre">zfill</span></code></p>
+</div>
+<div class="section" id="inventory-variables">
+<h2><a class="toc-backref" href="#id2">Inventory Variables</a><a class="headerlink" href="#inventory-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="host-vars">
+<h3><a class="toc-backref" href="#id3">Host vars</a><a class="headerlink" href="#host-vars" title="Permalink to this headline">¶</a></h3>
+<p>To specify variables in your inventory files for a specific host, you would use the following <code class="docutils literal"><span class="pre">key=value</span></code> format.</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">host1 key1</span><span class="o">=</span><span class="s">value1 key2=value2</span>
+</pre></div>
+</div>
+<p>This will provide the host with <code class="docutils literal"><span class="pre">key1</span></code> and <code class="docutils literal"><span class="pre">key2</span></code>, which will be used in the playbooks and ad-hoc commands referencing this host.</p>
+</div>
+<div class="section" id="group-vars">
+<h3><a class="toc-backref" href="#id4">Group vars</a><a class="headerlink" href="#group-vars" title="Permalink to this headline">¶</a></h3>
+<p>To specify variables in your inventory files you would put the variable on the same line in <code class="docutils literal"><span class="pre">key=value</span></code> format.</p>
+<p>To specify group variables in an inventory file:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="k">[mygroup]</span>
+<span class="na">host1</span>
+<span class="na">host2</span>
+
+<span class="k">[mygroup:vars]</span>
+<span class="na">variable1</span><span class="o">=</span><span class="s">value1</span>
+<span class="na">variable2</span><span class="o">=</span><span class="s">value2</span>
+<span class="na">variable3</span><span class="o">=</span><span class="s">value3</span>
+</pre></div>
+</div>
+<p>This would then provide each of these 3 variables for all hosts in <code class="docutils literal"><span class="pre">mygroup</span></code>.</p>
+</div>
+</div>
+<div class="section" id="playbook-variables">
+<h2><a class="toc-backref" href="#id5">Playbook Variables</a><a class="headerlink" href="#playbook-variables" title="Permalink to this headline">¶</a></h2>
+<p>In playbooks we can define variables in plays by the following.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="l l-Scalar l-Scalar-Plain">vars</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">variable1</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">value1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="included-files-and-roles">
+<h2><a class="toc-backref" href="#id6">Included files and roles</a><a class="headerlink" href="#included-files-and-roles" title="Permalink to this headline">¶</a></h2>
+<p>We&#8217;ve already covered this previously. To specify a variable to an include:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">include</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tasks.yml variable1=value</span>
+</pre></div>
+</div>
+<p>You can also specify variables this way as well.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">include</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tasks.yml</span>
+    <span class="l l-Scalar l-Scalar-Plain">vars</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">variable1</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">value</span>
+</pre></div>
+</div>
+<p>To use the value in the tasks.yml file we will reference the var as <code class="docutils literal"><span class="pre">{{</span> <span class="pre">variable1</span> <span class="pre">}}</span></code>.</p>
+</div>
+<div class="section" id="registered-variables">
+<h2><a class="toc-backref" href="#id7">Registered Variables</a><a class="headerlink" href="#registered-variables" title="Permalink to this headline">¶</a></h2>
+<p>An extremely useful feature of Ansible is the ability to register the output of a task into a variable so that it can be referenced later. To view possible output of a task that would be in the registered variable, you can look at the output of <code class="docutils literal"><span class="pre">-v</span></code>. What is included in the <code class="docutils literal"><span class="pre">results</span></code> value is what would be contained in the registered variable.</p>
+<p>For example:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">stat</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">path=/tmp</span>
+      <span class="l l-Scalar l-Scalar-Plain">register</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">tmp_folder_data</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">debug</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msg={{ tmp_folder_data }}</span>
+</pre></div>
+</div>
+<p>This sniplet would look for <code class="docutils literal"><span class="pre">/tmp</span></code> on the remote host, and get the information of that folder as per the <code class="docutils literal"><span class="pre">stat</span></code> module, and then provide us with all the information of that folder by the debug module and printing it to output.</p>
+</div>
+<div class="section" id="accessing-variable-data">
+<h2><a class="toc-backref" href="#id8">Accessing Variable Data</a><a class="headerlink" href="#accessing-variable-data" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes our variables may have more data to them than just a single value. For example the previous example of using <code class="docutils literal"><span class="pre">stat</span></code> module. It returned a bunch of information to us.</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;tmp_data&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;changed&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+        <span class="nt">&quot;stat&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;atime&quot;</span><span class="p">:</span> <span class="mf">1481748353.0</span><span class="p">,</span>
+            <span class="nt">&quot;ctime&quot;</span><span class="p">:</span> <span class="mf">1492640380.9926686</span><span class="p">,</span>
+            <span class="nt">&quot;dev&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="nt">&quot;executable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;exists&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;gid&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;gr_name&quot;</span><span class="p">:</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;inode&quot;</span><span class="p">:</span> <span class="mi">281474977014021</span><span class="p">,</span>
+            <span class="nt">&quot;isblk&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;ischr&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;isdir&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;isfifo&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;isgid&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;islnk&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;isreg&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;issock&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;isuid&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+            <span class="nt">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;1777&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;mtime&quot;</span><span class="p">:</span> <span class="mf">1492640380.9926686</span><span class="p">,</span>
+            <span class="nt">&quot;nlink&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="nt">&quot;path&quot;</span><span class="p">:</span> <span class="s2">&quot;/tmp&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;pw_name&quot;</span><span class="p">:</span> <span class="s2">&quot;root&quot;</span><span class="p">,</span>
+            <span class="nt">&quot;readable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;rgrp&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;roth&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;rusr&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;size&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;uid&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="nt">&quot;wgrp&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;woth&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;writeable&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;wusr&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;xgrp&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;xoth&quot;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+            <span class="nt">&quot;xusr&quot;</span><span class="p">:</span> <span class="kc">true</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To access a specific item for example <code class="docutils literal"><span class="pre">exists</span></code>, in this object we can use two types of notation.</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">tmp_data</span><span class="o">[</span><span class="s2">&quot;stat&quot;</span><span class="o">][</span><span class="s2">&quot;exists&quot;</span><span class="o">]</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="cp">{{</span> <span class="nv">tmp_data.stat.exists</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Both will return <code class="docutils literal"><span class="pre">true</span></code> as the result.</p>
+<p>To access the first element of an array we would use <code class="docutils literal"><span class="pre">data[0]</span></code>.</p>
+</div>
+<div class="section" id="variable-precedence">
+<h2><a class="toc-backref" href="#id9">Variable Precedence</a><a class="headerlink" href="#variable-precedence" title="Permalink to this headline">¶</a></h2>
+<p>Because of how many possible places we can put a variable, we will need to understand variable precedence. Top of the list is the weakest, bottom is the strongest.</p>
+<ul class="simple">
+<li>role defaults</li>
+<li>inventory INI or script group vars</li>
+<li>inventory group_vars/all</li>
+<li>playbook group_vars/all</li>
+<li>inventory group_vars/*</li>
+<li>playbook group_vars/*</li>
+<li>inventory INI or script host vars</li>
+<li>inventory host_vars/*</li>
+<li>playbook host_vars/*</li>
+<li>host facts</li>
+<li>play vars</li>
+<li>play vars_prompt</li>
+<li>play vars_files</li>
+<li>role vars (defined in role/vars/main.yml)</li>
+<li>block vars (only for tasks in block)</li>
+<li>task vars (only for the task)</li>
+<li>role (and include_role) params</li>
+<li>include params</li>
+<li>include_vars</li>
+<li>set_facts / registered vars</li>
+<li>extra vars (always win precedence)</li>
+</ul>
+<p>Extra vars are what we specify on the command line as we talked about earlier with <code class="docutils literal"><span class="pre">-e</span></code> or <code class="docutils literal"><span class="pre">--extra-vars</span></code>.</p>
+<p>There are also 3 types of variable scopes, <cite>Global</cite>, <cite>Play</cite>, and <cite>Host</cite>.</p>
+<ul class="simple">
+<li>Global is set via command line, Environment Variable, or using the config file.</li>
+<li>Play is set in the play, using vars entries, include_vars, role defaults, and vars.</li>
+<li>Host is set in the inventory, facts, or registered output from tasks.</li>
+</ul>
+</div>
+<div class="section" id="ansible-facts">
+<h2><a class="toc-backref" href="#id10">Ansible Facts</a><a class="headerlink" href="#ansible-facts" title="Permalink to this headline">¶</a></h2>
+<p>Ansible by default will gather facts about the remote host. You can see all the facts gathered from a remote host by using the command:</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>ansible hostname -m setup
+</pre></div>
+</div>
+<p>Of course replace hostname with the name of the host, the host will need to be in your inventory file. Once it runs it will return a JSON object with all the information Ansible knows of the host. It can return interface information, disk information, kernel information, OS information, and much more.</p>
+<p>To turn off Ansible Facts on a host you would use the following:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">all</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">no</span>
+</pre></div>
+</div>
+<p>Setting <code class="docutils literal"><span class="pre">gather_facts</span></code> to <code class="docutils literal"><span class="pre">no</span></code> will disable the gathering of facts from the remote host.</p>
+<p>Ansible also has Local Facts, which can be provided by custom facts modules. For more information please visit: <a class="reference external" href="http://docs.ansible.com/ansible/playbooks_variables.html#local-facts-facts-d">http://docs.ansible.com/ansible/playbooks_variables.html#local-facts-facts-d</a></p>
+</div>
+<div class="section" id="using-variables-in-jinja-templates">
+<h2><a class="toc-backref" href="#id11">Using Variables in Jinja Templates</a><a class="headerlink" href="#using-variables-in-jinja-templates" title="Permalink to this headline">¶</a></h2>
+<p>Ansible uses the Jinja template system to create files and handle variables within playbooks. An example of a a template task and the jinja template would be:</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">vars</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">port</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">9060</span>
+  <span class="l l-Scalar l-Scalar-Plain">server_ip</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">192.168.1.20</span>
+<span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">template</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">src=server.j2 dest=/etc/app/server.conf mode=0644</span>
+</pre></div>
+</div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">port=</span><span class="cp">{{</span> <span class="nv">port</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">serverIP=</span><span class="cp">{{</span> <span class="nv">server_ip</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>So the end result of the file located at /etc/app/server.conf would be:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span></span><span class="na">port</span><span class="o">=</span><span class="s">9060</span>
+<span class="na">serverIP</span><span class="o">=</span><span class="s">192.168.1.20</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-variables-in-tasks">
+<h2><a class="toc-backref" href="#id12">Using Variables in Tasks</a><a class="headerlink" href="#using-variables-in-tasks" title="Permalink to this headline">¶</a></h2>
+<p>Ansible allows us to use Jinja within playbooks as well. Making reusing tasks much easier as well as customizing tasks for a different operating system, or any configuration that may differ from server to server.</p>
+<p>For example we can change the variables based on the os distribution. Then use those to define a package name. This allows you to support cases in which Apache on CentOS is <code class="docutils literal"><span class="pre">httpd</span></code> but on Ubuntu is <code class="docutils literal"><span class="pre">apache</span></code>. We can load the variables specific to that OS and use those.</p>
+<p>Ubuntu.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">apache</span>
+</pre></div>
+</div>
+<p>CentOS.yml</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpd</span>
+</pre></div>
+</div>
+<p>Playbook Excerpt</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Include OS Specific Variables</span>
+  <span class="l l-Scalar l-Scalar-Plain">include_vars</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">ansible_distribution</span><span class="nv"> </span><span class="s">}}.yml&quot;</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Install Package</span>
+  <span class="l l-Scalar l-Scalar-Plain">package</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">name={{ package_name }} state=present</span>
+</pre></div>
+</div>
+<p>If you didn&#8217;t notice, when we did the <code class="docutils literal"><span class="pre">include_vars</span></code> the value had <code class="docutils literal"><span class="pre">&quot;&quot;</span></code> (double quotes) around it. Any value that starts with a variable will need quotes around it. This is a YAML syntax usage correction. Failure to do this will cause Ansible to hit an error on execution.</p>
+</div>
+<div class="section" id="jinja-filters">
+<h2><a class="toc-backref" href="#id13">Jinja Filters</a><a class="headerlink" href="#jinja-filters" title="Permalink to this headline">¶</a></h2>
+<p>There are many filters that can be extremely useful in modifying playbooks, values, and even dynamically handling data for variables. We can force things to be uppercase, lowercase, combine items, and much more. Jinja has a list of built-in filters documented here: <a class="reference external" href="http://jinja.pocoo.org/docs/2.9/templates/#builtin-filters">http://jinja.pocoo.org/docs/2.9/templates/#builtin-filters</a></p>
+<p>We will go over a few of these filters that have been common throughout our experience, and provide you some examples.</p>
+<div class="section" id="math-operators">
+<h3><a class="toc-backref" href="#id14">Math Operators</a><a class="headerlink" href="#math-operators" title="Permalink to this headline">¶</a></h3>
+<p>Jinja will also let us perform mathmatical actions on values. For example</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">- hosts: all</span>
+<span class="x">  vars:</span>
+<span class="x">    some_number: 2</span>
+<span class="x">  tasks:</span>
+<span class="x">    - debug: msg=</span><span class="cp">{{</span> <span class="nv">some_number</span> <span class="o">+</span> <span class="m">1</span> <span class="cp">}}</span><span class="x"></span>
+</pre></div>
+</div>
+<p>The result of this would give us a message with the number <code class="docutils literal"><span class="pre">3</span></code>.</p>
+<dl class="docutils">
+<dt>+</dt>
+<dd>Adds objects together, it&#8217;s not recommended to use this for strings, for strings use <code class="docutils literal"><span class="pre">~</span></code> which will concatenate strings.</dd>
+<dt>-</dt>
+<dd>Will subtract the second number from the first</dd>
+<dt>/</dt>
+<dd>Divides two numbers and will return a float</dd>
+<dt>//</dt>
+<dd>Divides two numbers and will return a truncated integer, this does not round, it just drops everything after the <cite>.</cite></dd>
+<dt>%</dt>
+<dd>Provides the remainder of an integer division</dd>
+<dt>*</dt>
+<dd>Multiplies the left operand with the right. <code class="docutils literal"><span class="pre">{{</span> <span class="pre">2</span> <span class="pre">*</span> <span class="pre">4</span> <span class="pre">}}</span></code> will return <code class="docutils literal"><span class="pre">8</span></code>. <code class="docutils literal"><span class="pre">{{</span> <span class="pre">'#'</span> <span class="pre">*</span> <span class="pre">40</span> <span class="pre">}}</span></code> would return 40 <code class="docutils literal"><span class="pre">#</span></code> symbols</dd>
+<dt>**</dt>
+<dd>Raises the left operated to the power of the right.</dd>
+</dl>
+</div>
+<div class="section" id="comparisons">
+<h3><a class="toc-backref" href="#id15">Comparisons</a><a class="headerlink" href="#comparisons" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>==</dt>
+<dd>Compares two objects for equality.</dd>
+<dt>!=</dt>
+<dd>Compares two objects for inequality.</dd>
+</dl>
+<dl class="docutils">
+<dt>&gt;</dt>
+<dd>true if the left hand side is greater than the right hand side.</dd>
+<dt>&gt;=</dt>
+<dd>true if the left hand side is greater or equal to the right hand side.</dd>
+</dl>
+<dl class="docutils">
+<dt>&lt;</dt>
+<dd>true if the left hand side is lower than the right hand side.</dd>
+<dt>&lt;=</dt>
+<dd>true if the left hand side is lower or equal to the right hand side.</dd>
+</dl>
+<p>These are extremely common in <code class="docutils literal"><span class="pre">when</span></code> portions of tasks.</p>
+</div>
+<div class="section" id="logic">
+<h3><a class="toc-backref" href="#id16">Logic</a><a class="headerlink" href="#logic" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>and</dt>
+<dd>Return true if the left and the right operand are true.</dd>
+<dt>or</dt>
+<dd>Return true if the left or the right operand are true.</dd>
+<dt>not</dt>
+<dd>negate a statement (see below).</dd>
+<dt>(expr)</dt>
+<dd>group an expression.</dd>
+</dl>
+<p>These can be useful when handing <code class="docutils literal"><span class="pre">when</span></code> statements or <code class="docutils literal"><span class="pre">if</span></code> statements in your jinja templates.</p>
+</div>
+<div class="section" id="other-operators">
+<h3><a class="toc-backref" href="#id17">Other Operators</a><a class="headerlink" href="#other-operators" title="Permalink to this headline">¶</a></h3>
+<p>The following operators are very useful but don’t fit into any of the other two categories:</p>
+<dl class="docutils">
+<dt>in</dt>
+<dd>Perform a sequence / mapping containment test. Returns true if the left operand is contained in the right. {{ 1 in [1, 2, 3] }} would, for example, return true.</dd>
+<dt>is</dt>
+<dd>Performs a test.</dd>
+</dl>
+<div class="line-block">
+<div class="line">Applies a filter.</div>
+</div>
+<dl class="docutils">
+<dt>~</dt>
+<dd>Converts all operands into strings and concatenates them.
+<code class="docutils literal"><span class="pre">{{</span> <span class="pre">&quot;Hello</span> <span class="pre">&quot;</span> <span class="pre">~</span> <span class="pre">name</span> <span class="pre">~</span> <span class="pre">&quot;!&quot;</span> <span class="pre">}}</span></code> would return (assuming name is set to &#8216;John&#8217;) <code class="docutils literal"><span class="pre">Hello</span> <span class="pre">John!</span></code>.</dd>
+<dt>()</dt>
+<dd>Call a callable: {{ post.render() }}. Inside of the parentheses you can use positional arguments and keyword arguments like in Python:
+<code class="docutils literal"><span class="pre">{{</span> <span class="pre">post.render(user,</span> <span class="pre">full=true)</span> <span class="pre">}}</span></code>.</dd>
+<dt>. / []</dt>
+<dd>Get an attribute of an object.</dd>
+</dl>
+</div>
+<div class="section" id="ipaddr">
+<h3><a class="toc-backref" href="#id18">ipaddr</a><a class="headerlink" href="#ipaddr" title="Permalink to this headline">¶</a></h3>
+<p>For instance lets validate the ip address we pass as a variable.</p>
+<p>To use <code class="docutils literal"><span class="pre">ipaddr</span></code> we will need to install <code class="docutils literal"><span class="pre">netaddr</span></code>.</p>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>pip install netaddr
+</pre></div>
+</div>
+<div class="highlight-shell"><div class="highlight"><pre><span></span>ansible-playbook playbook.yml --extra-vars <span class="s2">&quot;controller_ip=10.23.222.10&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">any</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">avinetworks.avicontroller</span>
+      <span class="l l-Scalar l-Scalar-Plain">con_controller_ip</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{{</span> <span class="nv">controller_ip | ipaddr</span> <span class="p p-Indicator">}}</span>
+</pre></div>
+</div>
+<p>If the supplied <code class="docutils literal"><span class="pre">controller_ip</span></code> isn&#8217;t a valid IP, the value of <code class="docutils literal"><span class="pre">con_controller_ip</span></code> will be &#8220;False&#8221; which would result in a failure of the execution.</p>
+</div>
+<div class="section" id="default">
+<h3><a class="toc-backref" href="#id19">default</a><a class="headerlink" href="#default" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">default()</span></code> filter allows us to provide a default to a variable if it&#8217;s not defined. Preventing an error if a value isn&#8217;t provided. For example:</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span>{{ my_string|default(&#39;You didn&#39;t provide a string&#39;)}}
+</pre></div>
+</div>
+<p>Would provide the result <code class="docutils literal"><span class="pre">You</span> <span class="pre">didn't</span> <span class="pre">provide</span> <span class="pre">a</span> <span class="pre">string</span></code> if <code class="docutils literal"><span class="pre">my_string</span></code> wasn&#8217;t defined.</p>
+<p>In Ansible Use</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">debug</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msg={{ my_string | default(&#39;You didn&#39;t provide a string&#39;)}}</span>
+</pre></div>
+</div>
+<p>When executing this if you don&#8217;t provide a variable named <code class="docutils literal"><span class="pre">my_string</span></code> then the <code class="docutils literal"><span class="pre">debug</span></code> module will return the message <code class="docutils literal"><span class="pre">You</span> <span class="pre">didn't</span> <span class="pre">provide</span> <span class="pre">a</span> <span class="pre">string</span></code>. This can be useful when not requiring variables.</p>
+</div>
+<div class="section" id="join">
+<h3><a class="toc-backref" href="#id20">join</a><a class="headerlink" href="#join" title="Permalink to this headline">¶</a></h3>
+<p>When using the <code class="docutils literal"><span class="pre">join()</span></code> filter we can join items in an array into a string.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">vars</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">my_list</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">item1</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">item2</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">item3</span>
+<span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">debug</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">msg={{ my_list | join(&#39;,&#39;)}}</span>
+</pre></div>
+</div>
+<p>Would create me a comma seperated list of <code class="docutils literal"><span class="pre">my_list</span></code> which would look like <code class="docutils literal"><span class="pre">item1,item2,item3</span></code></p>
+</div>
+</div>
+<div class="section" id="python-methods">
+<h2><a class="toc-backref" href="#id21">Python Methods</a><a class="headerlink" href="#python-methods" title="Permalink to this headline">¶</a></h2>
+<p>In practice we found that Python methods can also be useful when parsing text that is put into a variable, replace text, and many more python methods.</p>
+<div class="section" id="split">
+<h3><a class="toc-backref" href="#id22">split</a><a class="headerlink" href="#split" title="Permalink to this headline">¶</a></h3>
+<p>For instance, we want to split up a comma seperated list that was provided as a string variable to Ansible.</p>
+<p>To do this we can do the following using the <code class="docutils literal"><span class="pre">split</span></code> python method.</p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">build server list</span>
+    <span class="l l-Scalar l-Scalar-Plain">set_fact</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">servers</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{servers|default([])</span><span class="nv"> </span><span class="s">+</span><span class="nv"> </span><span class="s">[{&#39;ip&#39;:</span><span class="nv"> </span><span class="s">{&#39;addr&#39;:</span><span class="nv"> </span><span class="s">item,</span><span class="nv"> </span><span class="s">&#39;type&#39;:</span><span class="nv"> </span><span class="s">&#39;V4&#39;}}]</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">with_items</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{pool_servers.split(&#39;,&#39;)}}&quot;</span>
+</pre></div>
+</div>
+<p>Using that task we are able to take in a comma seperated list of server ip addresses as <code class="docutils literal"><span class="pre">pool_servers</span></code> and iterate through those and append those to the servers variable.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="loops.html" class="btn btn-neutral float-right" title="Loops" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="executing.html" class="btn btn-neutral" title="Executing Playbooks" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avi Networks.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'17.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

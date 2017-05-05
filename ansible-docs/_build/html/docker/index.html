@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Avi Docker Role &mdash; Avi Networks Ansible 17.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="Avi Networks Ansible 17.1.0 documentation" href="../index.html"/>
+        <link rel="next" title="Avi Network Interfaces Role" href="../network_interfaces/index.html"/>
+        <link rel="prev" title="Using a Compressed Docker Image" href="../serviceengine/openshift/compressed_image.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Avi Networks Ansible
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                17.1.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../ansible/index.html">Ansible</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../controller/index.html">Avi Controller Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../serviceengine/index.html">Avi SE Role</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Avi Docker Role</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#docker-community-edition-ce">Docker Community Edition (CE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#docker-enterprise-edition-ee">Docker Enterprise Edition (EE)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-usage">Example Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../network_interfaces/index.html">Avi Network Interfaces Role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../modules/index.html">Avi Ansible Modules</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Avi Networks Ansible</a>
+        
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Avi Docker Role</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/docker/index.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="avi-docker-role">
+<h1>Avi Docker Role<a class="headerlink" href="#avi-docker-role" title="Permalink to this headline">¶</a></h1>
+<p>Avi&#8217;s Docker role was created to help deploy and configure the Docker service on your server. The goal was to allow users to not only install Docker, but also configure the service itself. We allow choosing specific storage drivers, and also have automated some of the configuration required when doing so.</p>
+<p>Docker recently has split their project into two new projects. Community Edition (CE) and Enterprise Edition (EE).</p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#docker-community-edition-ce" id="id1">Docker Community Edition (CE)</a></li>
+<li><a class="reference internal" href="#docker-enterprise-edition-ee" id="id2">Docker Enterprise Edition (EE)</a></li>
+<li><a class="reference internal" href="#example-usage" id="id3">Example Usage</a></li>
+</ul>
+</div>
+<div class="section" id="docker-community-edition-ce">
+<h2><a class="toc-backref" href="#id1">Docker Community Edition (CE)</a><a class="headerlink" href="#docker-community-edition-ce" title="Permalink to this headline">¶</a></h2>
+<p>Docker CE is the free version of Docker. It containers the full Docker platform, and is great for developers and operations teams starting to build container applications. CE uses time-based releases with a YY.MM versioning scheme. It can be enhanced by free and paid addons from the Docker Cloud.</p>
+<p>Docker CE comes in two different variants:</p>
+<ul class="simple">
+<li><strong>Edge:</strong> for users wanting to get the latest and greatest features</li>
+<li><strong>Stable:</strong> released quarterly for users that want an easier-to-maintain release cycle</li>
+</ul>
+</div>
+<div class="section" id="docker-enterprise-edition-ee">
+<h2><a class="toc-backref" href="#id2">Docker Enterprise Edition (EE)</a><a class="headerlink" href="#docker-enterprise-edition-ee" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">At the moment we do not currenlty support deploying this version via this role.</p>
+</div>
+<p>Docker EE is the supported and certified container platform. Docker and its partners provide cooperative support for Certified Containers, and Plugins so customers can confidently use products in production.</p>
+<p>Docker EE is available in three tiers:</p>
+<ul class="simple">
+<li><strong>Basic:</strong> The Docker platform for certified infrastructure, with support from Docker Inc. and certified Containers and Plugins from Docker Store</li>
+<li><strong>Standard:</strong> Adds advanced image and container management, LDAP/AD user integration, and role-based access control (Docker Datacenter)</li>
+<li><strong>Advanced:</strong> Adds Docker Security Scanning and continuous vulnerability monitoring</li>
+</ul>
+<p>It is available as a free trial and for purchase at Docker Store, or from the Docker Sales team. It is also supported by many Docker partners.</p>
+</div>
+<div class="section" id="example-usage">
+<h2><a class="toc-backref" href="#id3">Example Usage</a><a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h2>
+<p><strong>Sample Deployment on Ubuntu</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># myplaybook.yml</span>
+<span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">avicontrollers</span>
+  <span class="l l-Scalar l-Scalar-Plain">become</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">avinetworks.docker</span>
+</pre></div>
+</div>
+<p><strong>Sample Deployment on CentOS/RedHat/Oracle</strong></p>
+<div class="highlight-yaml"><div class="highlight"><pre><span></span><span class="c1"># myplaybook.yml</span>
+<span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">avicontrollers</span>
+  <span class="l l-Scalar l-Scalar-Plain">become</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">roles</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">role</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">avinetworks.docker</span>
+      <span class="l l-Scalar l-Scalar-Plain">docker_storage_driver</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">devicemapper</span>
+      <span class="l l-Scalar l-Scalar-Plain">docker_block_device</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/dev/sda3</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           <div class="articleComments">
+            
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../network_interfaces/index.html" class="btn btn-neutral float-right" title="Avi Network Interfaces Role" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../serviceengine/openshift/compressed_image.html" class="btn btn-neutral" title="Using a Compressed Docker Image" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Avi Networks.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'17.1.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
