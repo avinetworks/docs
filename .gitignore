@@ -1,0 +1,3 @@
+ansible-docs/_build/*
+avi-ansible-integration/_build/*
+avi-docs/_build/*
