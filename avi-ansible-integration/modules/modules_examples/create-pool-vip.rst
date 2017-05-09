@@ -5,6 +5,7 @@ Create Pool and Virtual Service
 In this example we are going to create a pool, and then a vip. We use two of our Ansible modules: ``avi_pool`` and ``avi_virtualservice``.
 
 .. code-block:: yaml
+
   # Create pool, 1 VIP, and assign SSL Certificate to Pool
   ---
   - hosts: localhost

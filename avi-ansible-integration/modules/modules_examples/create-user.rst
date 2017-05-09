@@ -10,13 +10,14 @@ This is an example on how to work with the Avi Ansible modules to create a new u
 Using the ``avi_api_session`` module we are able to make API calls freely to Avi. Using this we can control the type of HTTP Method, as well as the data and path of the call.
 
 .. code-block:: yaml
+
   ---
   - hosts: localhost
     connection: local
     environment:
       AVI_CONTROLLER: ec2-34-250-111-254.eu-west-1.compute.amazonaws.com
       AVI_USERNAME: admin
-      AVI_PASSWORD: AviNetworks123!
+      AVI_PASSWORD: ************
     roles:
       - role: avinetworks.avisdk
     tasks:
@@ -42,4 +43,4 @@ Using the ``avi_api_session`` module we are able to make API calls freely to Avi
             password: AviNetworks123
         when: user_exists.obj.count < 1
 
-As you can see because idempotency isn't default we created a check to see if the user already exists, and if the user doesn't exist we run the next task which creates the user.
+As you can see because idempotency isn't default, when using ``avi_api_session`` we created a check to see if the user already exists, and if the user doesn't exist we run the next task which creates the user.
