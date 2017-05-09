@@ -41,3 +41,5 @@ Using the ``avi_api_session`` module we are able to make API calls freely to Avi
             username: testuser
             password: AviNetworks123
         when: user_exists.obj.count < 1
+
+As you can see because idempotency isn't default we created a check to see if the user already exists, and if the user doesn't exist we run the next task which creates the user.
