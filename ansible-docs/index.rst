@@ -1,10 +1,31 @@
-###################
-Ansible Integration
-###################
+#######
+Ansible
+#######
+
+****************
+What is Ansible?
+****************
+
+Ansible is an IT automation tool based on Python. It can managae network devices, configure systems, orchestrate cloud environments and deploy software.
+
+It's goal is to create a secure way to manage infrastructure (using OpenSSH) and allow easy auditing by even those not familiar with the product. There's no complicated syntax to learn, or any complicated languages. It's designed for developers, system adminstrators, network engineers, security engineers, and release engineers.
+
+Ansible is an agentless automation tool. Which means there is no agent that is required to be installed on the remote host. It just requires a "control" machine which executes Ansible playbooks against remote servers. Of course the control host will require access to the remote servers.
+
+Avi Networks recognizes how automation using Ansible is drastically changing the way network and operations teams work and have decided to support the project by providing modules, and roles that allow automation in Ansible to be used against Avi Networks software.
+
+**************
+Our Automation
+**************
+
+At Avi automation is in our blood. We understand how important automating the entire CI/CD pipeline is, and infact we use that same philosophy in our Ansible module development. Each module is built 1:1 from our APIs. Using automation we are able to build our modules from our objects automatically.
+
+*What does that mean?*
+
+Ever new feature, every new release will have modules that same moment to support those new features. No more waiting for a developer to write new modules to support the feature.
 
 .. toctree::
-    :maxdepth: 1
+    :maxdepth: 2
 
-    ansible/index
-
-Ansible is an extremely popular tool among operations and network engineers, and allows them to automate many tasks, which are often repeatable. It can configure systems, network devices, handle orchestration, and launch continuous deployments. It's goal is ease of use, and minimum amount of moving parts. It uses OpenSSH for transport instead of proprietary protocols, and communication. It's agentless, and can be ran from just about any machine (of course with network access). It's designed to be used by all types of users. For Ansible there is no need to manage remote daemons. It's also decentralized and relies on your existing credentials to gain access to the remote hosts.
+    introduction/index
+    playbooks/index
