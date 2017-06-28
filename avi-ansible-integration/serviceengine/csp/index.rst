@@ -27,7 +27,7 @@ Steps
 
   Replace the IP with the IP of your CSP host you want to deploy to.
 
-3. Make sure you are able to SSH into the CSP device.
+3. Make sure you are able to SSH into the CSP device. You can logout when done.
 
   .. code-block:: bash
 

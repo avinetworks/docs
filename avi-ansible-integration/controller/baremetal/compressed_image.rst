@@ -39,11 +39,12 @@ Steps
 
   In this playbook we are specifying that this "play" should apply to the "avicontrollers" hosts. Which we have previously defined in the inventory file. We are also specifying that the controllers IP is 10.10.27.101, this is used to properly determine the interface that the controller will use. We are then specifying the core count that the controller will use. This is the amount of cores that docker will be permitted to use for the controller. Then we specify the amount of memory in GB that the controller will be permitted to use. We recommend using 16GB or more. We also needed to specify that we want to deploy from package via ``con_package_deploy: true`` which tells the role we're deploying from package. Then we provided the location of the package file by providing the ``con_package_source`` parameter.
 
-4. Verify your local user has access to the hosts you are deploying the controller to. You will need `sudo` access as well. Login using your current user.
+4. Verify your local user has access to the hosts you are deploying the controller to. You will need `sudo` access as well. Login using your current user to make sure you can login. Make sure to logout when done to execute your playbook from your hose.
 
   .. code-block:: bash
 
     ssh 10.120.202.24
+
 
 5. Execute the playbook.
 

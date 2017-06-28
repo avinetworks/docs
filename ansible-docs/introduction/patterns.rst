@@ -9,7 +9,7 @@ When running Ad-Hoc commands Ansible can allso accept patterns, for example
 
 .. code-block:: shell
 
-  ansible *.example.com -m ping
+  ansible \*.example.com -m ping
 
 This command would ping all hosts in your inventory file that contains .example.com at the end of the host or alias.
 
@@ -23,6 +23,6 @@ You can allso use:
 
 .. code-block:: shell
 
-  ansible * -m ping
+  ansible \* -m ping
 
 For more information please visit http://docs.ansible.com/ansible/intro_patterns.html

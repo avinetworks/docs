@@ -44,7 +44,7 @@ Steps
 
   We will automatically use the ``se_master_ctl_ip``, ``se_master_ctl_username``, and ``se_master_ctl_password`` to authenticate, and autoregister the service engine to the controllers default cloud. To choose which cloud you want please use the ``se_cloud_name`` value. If you use multiple tenants please use ``se_tenant`` to choose the specific tenant the cloud is under.
 
-4. Verify your local user has access to the hosts you are deploying the service engine to. You will need `sudo` access as well. Login using your current user.
+4. Verify your local user has access to the hosts you are deploying the controller to. You will need `sudo` access as well. Login using your current user to make sure you can login. Make sure to logout when done to execute your playbook from your hose.
 
   .. code-block:: bash
 

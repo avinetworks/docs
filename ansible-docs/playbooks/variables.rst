@@ -255,14 +255,14 @@ Ansible uses the Jinja template system to create files and handle variables with
 .. code-block:: yaml
 
   vars:
-    port: 9060
+    server_port: 9060
     server_ip: 192.168.1.20
   tasks:
     - template: src=server.j2 dest=/etc/app/server.conf mode=0644
 
 .. code-block:: jinja
 
-  port={{ port }}
+  port={{ server_port }}
   serverIP={{ server_ip }}
 
 So the end result of the file located at /etc/app/server.conf would be:
@@ -491,7 +491,7 @@ To do this we can do the following using the ``split`` python method.
   tasks:
     - name: build server list
       set_fact:
-        servers: "{{servers|default([]) + [{'ip': {'addr': item, 'type': 'V4'}}] }}"
-      with_items: "{{pool_servers.split(',')}}"
+        servers: "{{ servers|default([]) + [{'ip': {'addr': item, 'type': 'V4'}}] }}"
+      with_items: "{{ pool_servers.split(',') }}"
 
 Using that task we are able to take in a comma seperated list of server ip addresses as ``pool_servers`` and iterate through those and append those to the servers variable.
