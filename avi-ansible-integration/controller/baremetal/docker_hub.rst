@@ -21,7 +21,7 @@ Steps
 
   Replace the IP with the IP of your baremetal host you want to deploy to.
 
-3. Create the playbook. It should look similar to this
+3. Create the playbook. It should look similar to this. Note: You can use ``con_version`` to specify which Avi release you'd like to use. By default it uses whatever version referenced in the README.md file, and the version of the Role.
 
   .. code-block:: yaml
 
