@@ -16,7 +16,7 @@ Steps
 
   .. code-block:: bash
 
-    sudo ansible-galaxy -f avinetworks.avicontroller
+    sudo ansible-galaxy install -f avinetworks.avicontroller-csp
 
 2. Identify how we want to define our hosts. Ansible can accept hosts three ways: command-line, by inventory file, or by dynamic inventory file. We will use an inventory in this case. Ansible by default uses /etc/ansible/hosts as it's default inventory. Lets add this segment to the bottom of the page.
 
